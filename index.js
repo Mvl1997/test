@@ -59,8 +59,21 @@ for (let i = 0; i < vriendenLijst.length; i++) { // hierdoor print de lijst wel 
 */
 /************************************************************************************ */
 
-const teRadenGetal = Math.floor(Math.random()*30)
-
-const geradenGetal = rl.question("Geef een getal tussen 0 en 30 aub?")
+function guessNumber() {
+    let userIsGuessing = false;
+    const toGuess = Math.floor(Math.random() * 31);
+    while (!userIsGuessing) {
+      let question = rl.question("Geef een getal in tussen 0 en 30 aub? ");
+      if (Number(question) === toGuess) {
+        userIsGuessing = true;
+      } else if (question < toGuess) {
+        console.log("Tip: hoger!");
+      } else {
+        console.log("Tip: lager!");
+      }
+    }
+    return `Perfect! Het te raden getal was inderdaad ${toGuess} :-)`;
+  }
+  console.log(guessNumber());
 
 
